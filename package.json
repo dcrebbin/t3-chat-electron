@@ -1,0 +1,61 @@
+{
+  "name": "t3-chat-electron",
+  "version": "1.0.0",
+  "description": "An Electron wrapper for T3 Chat",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && electron .",
+    "watch": "tsc -w",
+    "lint": "eslint . --ext .ts",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/electron": "^1.4.38",
+    "@types/node": "^24.0.3",
+    "electron": "^36.5.0",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.8.3"
+  },
+  "build": {
+    "appId": "com.t3.chat",
+    "productName": "T3 Chat",
+    "copyright": "Copyright © 2025 Ping Labs",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json",
+      "node_modules/**/*",
+      "!**/*.ts"
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "icon": "build/icon.png"
+    }
+  }
+}
