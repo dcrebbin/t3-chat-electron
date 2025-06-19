@@ -5,12 +5,13 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    title: "T3 Chat",
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
       preload: path.join(__dirname, "preload.js"),
     },
-    icon: path.join(__dirname, "build/assets/icon.png"),
+    icon: path.join(__dirname, "../build/icon.png"),
   });
 
   mainWindow.loadURL("https://t3.chat");
