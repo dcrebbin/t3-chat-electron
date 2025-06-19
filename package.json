@@ -9,7 +9,11 @@
     "watch": "tsc -w",
     "lint": "eslint . --ext .ts",
     "pack": "npm run build && electron-builder --dir",
-    "dist": "npm run build && electron-builder"
+    "dist": "npm run build && electron-builder",
+    "pack:win": "npm run build && electron-builder --win --dir",
+    "pack:linux": "npm run build && electron-builder --linux --dir",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:linux": "npm run build && electron-builder --linux"
   },
   "keywords": [],
   "author": "",
@@ -45,17 +49,22 @@
     "win": {
       "target": [
         "nsis",
-        "portable"
+        "portable",
+        "zip"
       ],
-      "icon": "build/icon.ico"
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
     },
     "linux": {
       "target": [
         "AppImage",
         "deb",
-        "rpm"
+        "rpm",
+        "tar.gz"
       ],
-      "icon": "build/icon.png"
+      "icon": "build/icon.png",
+      "category": "Network",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
     }
   }
 }
